@@ -8,13 +8,13 @@ Take the raw data shown below as an example. Using our `data_parameters.py` file
 | Animal | Habitat | AverageWeight  | ChineseZodiacYear | Domesticated | MaxLifespan |
 | :---- |:------| :-----| :-------- |:-----|:-----|
 | Dolphin | Ocean | 150 | NaN   | No | 45 |
-| Whale     | Ocean     | 30000 | No     | 200  |  
+| Whale     | Ocean     | 30000 | NaN     | No | 200  |  
 | Dragon | Fantasy    | 10000 | 2012-01-01  | No      | 4500 |
-| Tiger| Land | $1600 | 200  | 2010-01-01 | No | 18 |
-| Cat | NaN  |   $12 | 4  | NaN      |   Yes |  16 |
+| Tiger| Land | 200 | 2010-01-01  | No | 18 |
+| Cat | NaN  |   4 | NaN  |    Yes |  16 |
 | Unicorn | Fantasy   |  Nan | NaN | No  | 2000 |
 | NaN | Land  |   120 | 2007-01-01     | No  | 60 |
-| Ox| Land   |    600 | 2009-01-01 | Yes  15 |
+| Ox| Land   |    600 | 2009-01-01 | Yes | 15 |
 
 
 After encoding `data_parameters.py`, we can call `processingpipeline` to process our dataset:
