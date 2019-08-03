@@ -1,18 +1,17 @@
-import datetime
+## Example functions:
+import numpy as np
 import pandas as pd
 
-def fill_pain_scale_na_with_cpc_mean(dataset):
-    return (dataset['PainScale'].fillna(dataset.
-                 groupby('PresentingComplaint')['PainScale'].transform("mean")))
+def log_transform_base10(dataset, features):
+    dataset[features] = dataset[features].transform(np.log10)
+    return dataset
 
-def DOBtoAGE(dataset, DOB):
-
-    dataset[DOB] = pd.to_datetime(dataset[DOB])
-
-    def GetAGEfromDOB(DOB):
-        currentDT = datetime.datetime.now()
-        return currentDT.year - DOB.year
-
-    dataset[DOB] = dataset[DOB].apply(GetAGEfromDOB)
-
+def identify_if_zodiac_animal(dataset, features):
+    dataset[features] = pd.to_datetime(dataset[features])
+    def identify_zodiac_year(row):
+        if row.year == 2200:
+            return 0
+        else :
+            return 1
+    dataset[features] = dataset[features].apply(identify_zodiac_year)
     return dataset

@@ -1,83 +1,57 @@
-from custom_functions import *
+from .custom_functions import *
 
-filepath = '/Users/mackdelany/Documents/EDAAG/ed-intelligence/ed-intelligence/data-files' + '/triageCodeSample.csv'
+## Dictionary with {'FeatureName': type}
+target_feature = {'MaxLifespan': float}
 
-target_feature = {'TriageCode': str}
-
+## Dictionary with {'FeatureName': type}
 data_features = {
-    'PresentingComplaint' : str, 
-    'DOB' : str,
-    'Gender' : str,
-    'Airway' : str,
-    'Breathing' : str,
-    'NeuroAssessment' : str,
-    'AlcoholAFactorInInjury' : str,
-    'AlcoholInLast6Hrs' : str,
-    'SignsOfIntoxication' : str,
-    'PainScale' : float,
-    'CirculatorySkin': str,
-    'MentalHealthConcerns': str,
-    'CurrentSmoker': str,
-    'QuestionTwoAnswer': str,
-    'QuestionThreeAnswer': str
+    'Habitat' : str, 
+    'AverageWeight' : float,
+    'ChineseZodiacYear' : str,
+    'Domesticated' : str
 }
 
 # DROP = drop null columns
 # String = fill null with string
 # ZEROS = fill null with zero
-# Dictionary = run cleaningFunction, dict should hold {'function name': 'parameters'}
+# Callable = function to be run, function should be stored in custom_functions.py
 mappings_for_nulls = {
-    'DOB': 'DROP',
-    'Gender': 'U',
-    'Airway': 'ASSUMED OK',
-    'Breathing': 'ASSUMED OK',
-    'NeuroAssessment': 'ASSUMED OK',
-    'AlcoholAFactorInInjury': 'ASSUMED NO',
-    'AlcoholInLast6Hrs': 'ASSUMED NO',
-    'SignsOfIntoxication': 'ASSUMED NO',
-    'PainScale': fill_pain_scale_na_with_cpc_mean,
-    'CirculatorySkin': 'ASSUMED NORMAL',
-    'MentalHealthConcerns': 'ASSUMED NO',
-    'CurrentSmoker': 'ASSUMED NO',
-    'QuestionTwoAnswer': 'ASSUMED NO',
-    'QuestionThreeAnswer': 'ASSUMED NO'
+    'Animal' : 'DROP',
+    'Habitat': 'Land',
+    'AverageWeight': 'MEAN',
+    'ChineseZodiacYear': '2200-01-01',
+    'Domesticated': 'DROP',
+    'MaxLifespan': 'DROP'
 }
 
-# Dictionary = mapping of values
+# Dictionary mapping values, format is: {'FeatureName': {'PriorValue':'NewValue'}}
 feature_transformations = {
-    'Gender': {'M':0,'U':0.5,'F':1},
-    'Airway': {'PATENT':0,'ASSUMED OK':0.25,'OTHER':1},
-    'Breathing': {'NO DISTRESS':0,'ASSUMED OK':0.25,'OTHER':1},
-    'NeuroAssessment': {'INTACT':0,'ASSUMED OK':0.25,'OTHER':1},
-    'AlcoholAFactorInInjury': {'NO':0,'ASSUMED OK':0.25,'YES':1},
-    'AlcoholInLast6Hrs': {'NO':0,'ASSUMED NO':0.25,'YES':1},
-    'SignsOfIntoxication': {'NO':0,'ASSUMED NO':0.25,'INFLU':0.75, 'INTOX':1},
-    'CirculatorySkin': {'NORMAL':0,'ASSUMED NORMAL':0.25,'ALTERED':1},
-    'MentalHealthConcerns': {'NO':0,'ASSUMED NO':0.2,'DNS':0.5, 'YES': 1},
-    'CurrentSmoker': {'NEVER SMOKED':0,'ASSUMED NO':0.25,'EX SMOKER':0.75, 'YES': 1},
-    'QuestionTwoAnswer': {'NO':0, 'ASSUMED NO':0, 'YES':1},
-    'QuestionThreeAnswer': {'NO':0, 'ASSUMED NO':0, 'YES':1}
+    'Domesticated': {'No': 0, 'Yes': 1},
 }
 
-# Custom functions to be run, should be a list of lists -> each list should be [feature, [function, parameters]]
-
+# Custom functions to be run, format is {function: 'arguments'}, note that dataset is always included as an argument
+# by default, it does not need to be listed here
 custom_functions_to_be_run = {
-    DOBtoAGE : 'DOB'
+    log_transform_base10 : 'AverageWeight',
+    identify_if_zodiac_animal: 'ChineseZodiacYear'
 }
 
+# List of features to be scaled, format is ['FeatureName1', 'FeatureName2']
 features_to_be_scaled = [
-    'DOB',
-    'PainScale'
+    'AverageWeight'
 ]
 
+# List of features to be standardized, format is ['FeatureName1', 'FeatureName2']
 features_to_be_standardized = [
-    
+    'AverageWeight'
 ]
 
+# Dict of features to be standardized, format is {'PriorName', 'NewName'}
 features_to_be_renamed = {
-    'DOB' : 'Age'
+    'ChineseZodiacYear' : 'IsAnimalOfTheZodiac'
 }
 
+# List of features to hot encode, format is ['FeatureName1', 'FeatureName2']
 features_to_hot_encode = [
-    'PresentingComplaint'
+    'Habitat'
 ]

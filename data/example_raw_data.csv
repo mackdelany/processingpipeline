@@ -1,0 +1,9 @@
+Animal,Habitat,AverageWeight,ChineseZodiacYear,Domesticated,MaxLifespan
+Dolphin,Ocean,150.0,,No,45
+Whale,Ocean,30000.0,,No,200
+Dragon,Fantasy,10000.0,2012-01-01,No,4500
+Tiger,Land,200.0,2010-01-01,No,18
+Cat,,4.0,,Yes,16
+Unicorn,Fantasy,,,No,2000
+,Land,120.0,2007-01-01,No,60
+Ox,Land,600.0,2009-01-01,Yes,15

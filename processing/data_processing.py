@@ -4,10 +4,10 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
 
-from data_parameters import *
-from custom_functions import *
+from .data_parameters import *
+from .custom_functions import *
 
-def clean_and_return_dataset(filepath, filename):
+def process_and_return_dataset(filepath, filename):
     processed_data = process_dataset(filepath)
     processed_data.to_csv(filename, encoding='utf-8', index=False)
 
