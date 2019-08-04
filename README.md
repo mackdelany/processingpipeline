@@ -25,7 +25,7 @@ import processingpipeline as pp
 processed_data = pp.process_dataset('processingpipeline/data/example_raw_data.csv')
 ```
 
-Which outputs our processed DataFrame as given below. We can continue to adjust our `data_parameters.py` file to output new datasets as we add features and iterate on our processed dataset over time. More information on how to set the `data_parameters.py` is given further down the page.
+Which outputs our processed DataFrame as given below. We can continue to adjust our `data_parameters.py` file to output new datasets as we add features and iterate on our processed dataset over time. 
 
 | Fantasy | Land | Ocean | AverageWeight | ChineseZodiacYear | Domesticated | MaxLifespan |
 | :---- |:------| :-----| :-------- |:-----|:-----|:-----|
