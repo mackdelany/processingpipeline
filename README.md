@@ -1,8 +1,8 @@
 # Processing Pipeline
 
-This a template with which you can build your own package to clean and process tabular data. The template allows you to create a flexible processing pipeline for easily iterating and experiment with features, data structure and model selection.
+This a template with which you can build your own package to clean and process tabular data. The template provides a flexible processing pipeline for easily iterating and experimenting with features, data structure and model selection.
 
-Take the raw data shown below as an example. Using our `data_parameters.py` file, we can easily encode what processes to execute on which features, and in what order. This includes multiple mechanisms for dealing with null values, renaming features, scaling, standardizing, custom functions, mapping new values and hot encoding.
+Take the raw data shown below as an example. Using our `data_parameters.py` file, we can encode what processes to execute on which features, and in what order. This includes multiple mechanisms for dealing with null values, renaming features, scaling, standardizing, custom functions, mapping new values and hot encoding.
 
 
 | Animal | Habitat | AverageWeight  | ChineseZodiacYear | Domesticated | MaxLifespan |
@@ -25,7 +25,7 @@ import processingpipeline as pp
 processed_data = pp.process_dataset('processingpipeline/data/example_raw_data.csv')
 ```
 
-Which outputs our processed DataFrame as given below. We can continue to adjust our `data_parameters.py` file to output new datasets as we add features and iterate on our processed dataset over time. 
+Which outputs our processed DataFrame as given below. Once set, we can continue to adjust our `data_parameters.py` file to output new datasets as we add features and iterate on our processed dataset over time. 
 
 | Fantasy | Land | Ocean | AverageWeight | ChineseZodiacYear | Domesticated | MaxLifespan |
 | :---- |:------| :-----| :-------- |:-----|:-----|:-----|
