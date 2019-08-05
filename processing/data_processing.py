@@ -49,7 +49,7 @@ def map_nulls(dataset, mappings_for_nulls):
             fill_value = mappings_for_nulls[feature]
             dataset[feature].fillna(value=fill_value, inplace=True)
 
-    return dataset.dropna()
+    return dataset
 
 
 def set_datatypes(dataset, data_features, target_feature):
