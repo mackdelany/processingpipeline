@@ -27,10 +27,24 @@ def process_dataset(filepath):
     
 
 def select_features(dataset, data_features, target_feature):
+    """Select designated columns from DataFrame
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    data_features -- Dictionary of independent (X) features and their types
+    target_feature -- Dictionary of the dependent (y) feature and it's type
+    """
     return dataset[(list(data_features.keys()) + list(target_feature.keys()))]
 
 
 def map_nulls(dataset, mappings_for_nulls):
+    """Execute custom operations on null values in dataframe
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    mappings_for_nulls -- Dictionary of features (keys) to operate on, and the o
+    operations to execute on them (values)
+    """
     for feature in mappings_for_nulls:
 
         if mappings_for_nulls[feature] == 'DROP':
@@ -53,6 +67,13 @@ def map_nulls(dataset, mappings_for_nulls):
 
 
 def set_datatypes(dataset, data_features, target_feature):
+    """Set column types in feature dataframe
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    data_features -- Dictionary of independent (X) features and their types
+    target_feature -- Dictionary of the dependent (y) feature and it's type
+    """
     for feature in data_features.keys():
         dataset[feature] = dataset[feature].astype(data_features[feature])
 
@@ -62,11 +83,25 @@ def set_datatypes(dataset, data_features, target_feature):
 
 
 def transform_features(dataset, feature_transformations):
+    """Transform feature values according to pre-set mappings
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    feature_transformations -- Dictionary of features to operate on (keys) and
+    the associated mapping of feature values (values)
+    """
     for feature in feature_transformations:
         dataset[feature] = dataset[feature].map(feature_transformations[feature])
     return dataset
 
 def custom_functions(dataset, custom_functions_to_be_run):
+    """Transform feature values according to pre-set mappings
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    feature_transformations -- Dictionary of features to operate on (keys) and
+    the associated mapping of feature values (values)
+    """
     for custom_function in custom_functions_to_be_run:
         if (custom_functions_to_be_run[custom_function]) == 'NO ADDITIONAL ARGUMENTS':
             dataset = custom_function(dataset)
@@ -75,22 +110,47 @@ def custom_functions(dataset, custom_functions_to_be_run):
     return dataset
 
 def scale_features(dataset, features_to_be_scaled):
+    """Scale chosen features using MinMaxScaler from SciKitLearn
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    features_to_be_scaled -- List of features to be scaled
+    """
     if len(features_to_be_scaled) > 0:
         scaler = MinMaxScaler()
         dataset[features_to_be_scaled] = scaler.fit_transform(dataset[features_to_be_scaled])
     return dataset
 
 def standardize_features(dataset, features_to_be_standardized):
+    """Standardize chosen features using StandardScaler from SciKitLearn
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    features_to_be_standardized -- List of features to be standardized
+    """
     if len(features_to_be_standardized) > 0:
         scaler = StandardScaler()
         dataset[features_to_be_standardized] = scaler.fit_transform(dataset[features_to_be_standardized])
     return dataset
 
 def rename_features(dataset, features_to_be_renamed):
+    """Rename chosen columns using a preset mapping
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    features_to_be_renamed -- Dictionary of features to be renamed (keys) and
+    their new names (values)
+    """
     dataset.rename(features_to_be_renamed, inplace=True)
     return dataset
 
 def hot_encode(dataset, features_to_hot_encode):
+    """Hot encode chosen features using a preset mapping
+
+    Keyword arguments:
+    dataset -- DataFrame to operate on
+    features_to_hot_encode -- List of features to be hot encoded
+    """
     for feature in features_to_hot_encode:
         dummies = pd.get_dummies(dataset[feature])
         dataset.reset_index(drop=True, inplace=True)
