@@ -46,7 +46,7 @@ features_to_be_standardized = [
     'AverageWeight'
 ]
 
-# Dict of features to be standardized, format is {'PriorName', 'NewName'}
+# Dict of features to be renamed, format is {'PriorName', 'NewName'}
 features_to_be_renamed = {
     'ChineseZodiacYear' : 'IsAnimalOfTheZodiac'
 }
