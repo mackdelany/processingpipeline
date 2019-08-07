@@ -1,11 +1,11 @@
-from .custom_functions import *
+from processing.custom_functions import *
 
 ## Dictionary with {'FeatureName': type}
 target_feature = {'MaxLifespan': float}
 
 ## Dictionary with {'FeatureName': type}
 data_features = {
-    'Habitat' : str, 
+    'Habitat' : str,
     'AverageWeight' : float,
     'ChineseZodiacYear' : str,
     'Domesticated' : str

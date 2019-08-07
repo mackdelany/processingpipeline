@@ -1,11 +1,12 @@
 import datetime
-import numpy as np 
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
 
-from .data_parameters import *
-from .custom_functions import *
+from processing.data_parameters import *
+from processing.custom_functions import *
+
 
 def process_and_return_dataset(filepath, filename):
     processed_data = process_dataset(filepath)
@@ -24,7 +25,7 @@ def process_dataset(filepath):
     dataset = rename_features(dataset, features_to_be_renamed)
     dataset = hot_encode(dataset, features_to_hot_encode)
     return dataset.dropna()
-    
+
 
 def select_features(dataset, data_features, target_feature):
     """Select designated columns from DataFrame
