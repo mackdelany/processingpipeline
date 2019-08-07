@@ -1,6 +1,6 @@
 import pytest
 import sys
-sys.path.append('..')
+
 from processing import *
 from test_parameters import *
 import numpy as np 

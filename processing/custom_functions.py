@@ -1,10 +1,12 @@
-## Example functions:
+"""Example functions"""
 import numpy as np
 import pandas as pd
+
 
 def log_transform_base10(dataset, features):
     dataset[features] = dataset[features].transform(np.log10)
     return dataset
+
 
 def identify_if_zodiac_animal(dataset, features):
     dataset[features] = pd.to_datetime(dataset[features])
@@ -15,6 +17,7 @@ def identify_if_zodiac_animal(dataset, features):
             return 1
     dataset[features] = dataset[features].apply(identify_zodiac_year)
     return dataset
+
 
 def encode_cyclical_time_of_day(dataset, DateTimeColumn):
     dataset[DateTimeColumn] = pd.to_datetime(dataset[DateTimeColumn]).dt.hour
