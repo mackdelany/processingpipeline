@@ -43,3 +43,13 @@ Do note, that we can also export our processed data to a .csv file:
 import processingpipeline as pp
 pp.clean_and_return_dataset('processingpipeline/data/example_raw_data.csv','processed_data.csv') 
 ```
+
+# Install and set up
+
+To use processingpipeline as a template for a machine learning project; simply git clone this repo into your project folder - and edit away! 
+
+Alternatively, if you'd like to install processingpipeline as a package, git clone the repo and execute the setup.py file from the command line while within the processingpipeline folder:
+
+``` bash
+python3 setup.py
+```
