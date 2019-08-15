@@ -1,9 +1,16 @@
 from processing.custom_functions import *
 
-## Dictionary with {'FeatureName': type}
+"""Target Feature
+
+Dictionary with {'FeatureName': type}
+""" 
 target_feature = {'MaxLifespan': float}
 
-## Dictionary with {'FeatureName': type}
+
+"""Dependent Features to be included in final dataset
+
+Dictionary with {'FeatureName': type}
+"""
 data_features = {
     'Habitat' : str,
     'AverageWeight' : float,
@@ -11,10 +18,17 @@ data_features = {
     'Domesticated' : str
 }
 
-# DROP = drop null columns
-# String = fill null with string
-# ZEROS = fill null with zero
-# Callable = function to be run, function should be stored in custom_functions.py
+
+"""Operations to be executed on null values
+
+Dictionary with {'FeatureName': Operation to be taken}
+To drop all rows that have a null value for a feature, enter 'DROP'
+To fill all feature null values with a zero, enter 'ZEROS'
+To fill all feature null values with a custom string, enter that custom string
+To fill all feature null values with the mean value of that column, enter 'MEAN'
+To execute a custom function upon feature null values, define that function in 
+custom_functions.py and enter the name of the function in the dictionary
+"""
 mappings_for_nulls = {
     'Animal' : 'DROP',
     'Habitat': 'Land',
@@ -24,34 +38,61 @@ mappings_for_nulls = {
     'MaxLifespan': 'DROP'
 }
 
-# Dictionary mapping values, format is: {'FeatureName': {'PriorValue':'NewValue'}}
+
+"""Transformations to make on feature values
+
+Dictionary with {'FeatureName': Dictionary with {'Value to be transformed': 'Value to be transformed to'} }
+"""
 feature_transformations = {
     'Domesticated': {'No': 0, 'Yes': 1},
 }
 
-# Custom functions to be run, format is {function: 'arguments'}, note that dataset is always included as an argument
-# by default, it does not need to be listed here
+
+"""Custom functions to be executed
+
+Dictionary with {function: 'arguments'}
+
+Note that dataset is always included as the first argument for each function by default and should not be 
+included in the dictionary below. Only additional arguments should be provided below. For an example, reference the mapping
+below and the example functions in custom_functions.py. 
+"""
 custom_functions_to_be_run = {
     log_transform_base10 : 'AverageWeight',
     identify_if_zodiac_animal: 'ChineseZodiacYear'
 }
 
-# List of features to be scaled, format is ['FeatureName1', 'FeatureName2']
+
+"""Features to be scaled
+
+List of feature names: ['FeatureName1', 'FeatureName2']
+"""
 features_to_be_scaled = [
     'AverageWeight'
 ]
 
-# List of features to be standardized, format is ['FeatureName1', 'FeatureName2']
+
+"""Features to be standardized
+
+List of feature names: ['FeatureName1', 'FeatureName2']
+"""
 features_to_be_standardized = [
     'AverageWeight'
 ]
 
-# Dict of features to be renamed, format is {'PriorName', 'NewName'}
+
+"""Features to be renamed
+
+Dictionary with {'PriorName', 'NewName'}
+"""
 features_to_be_renamed = {
     'ChineseZodiacYear' : 'IsAnimalOfTheZodiac'
 }
 
-# List of features to hot encode, format is ['FeatureName1', 'FeatureName2']
+
+"""Features to hot encode
+
+List of feature names: ['FeatureName1', 'FeatureName2']
+"""
 features_to_hot_encode = [
     'Habitat'
 ]

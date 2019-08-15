@@ -95,6 +95,7 @@ def transform_features(dataset, feature_transformations):
         dataset[feature] = dataset[feature].map(feature_transformations[feature])
     return dataset
 
+
 def custom_functions(dataset, custom_functions_to_be_run):
     """Transform feature values according to pre-set mappings
 
@@ -110,6 +111,7 @@ def custom_functions(dataset, custom_functions_to_be_run):
             dataset = custom_function(dataset, custom_functions_to_be_run[custom_function])
     return dataset
 
+
 def scale_features(dataset, features_to_be_scaled):
     """Scale chosen features using MinMaxScaler from SciKitLearn
 
@@ -121,6 +123,7 @@ def scale_features(dataset, features_to_be_scaled):
         scaler = MinMaxScaler()
         dataset[features_to_be_scaled] = scaler.fit_transform(dataset[features_to_be_scaled])
     return dataset
+
 
 def standardize_features(dataset, features_to_be_standardized):
     """Standardize chosen features using StandardScaler from SciKitLearn
@@ -134,6 +137,7 @@ def standardize_features(dataset, features_to_be_standardized):
         dataset[features_to_be_standardized] = scaler.fit_transform(dataset[features_to_be_standardized])
     return dataset
 
+
 def rename_features(dataset, features_to_be_renamed):
     """Rename chosen columns using a preset mapping
 
@@ -144,6 +148,7 @@ def rename_features(dataset, features_to_be_renamed):
     """
     dataset.rename(features_to_be_renamed, inplace=True)
     return dataset
+
 
 def hot_encode(dataset, features_to_hot_encode):
     """Hot encode chosen features using a preset mapping
