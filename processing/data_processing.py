@@ -1,4 +1,5 @@
 import datetime
+
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
@@ -9,11 +10,23 @@ from processing.custom_functions import *
 
 
 def process_and_return_dataset(filepath, filename):
+    """Cleans raw dataset according to coniguration in data_parameters.py
+    and returns a .csv file
+
+    Keyword arguments:
+    filepath -- path to raw dataset
+    filename -- path and name of cleaned dataset
+    """
     processed_data = process_dataset(filepath)
     processed_data.to_csv(filename, encoding='utf-8', index=False)
 
 
 def process_dataset(filepath):
+    """Cleans raw dataset according to coniguration in data_parameters.py
+
+    Keyword arguments:
+    filepath -- path to raw dataset
+    """
     dataset = pd.read_csv(filepath)
     dataset = map_nulls(dataset, mappings_for_nulls)
     dataset = select_features(dataset, data_features, target_feature)
