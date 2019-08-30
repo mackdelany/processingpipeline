@@ -1,6 +1,6 @@
 # Processing Pipeline
 
-This a template with which you can build your own package to clean and process tabular data. The template provides a flexible processing pipeline for easily iterating and experimenting with features, data structure and model selection.
+This a template with which you can build your own package to clean and process tabular data. The template provides a flexible processing pipeline for easily iterating and experimenting with features, data structure and model selection. You can [check out the example data_parameters.py](https://github.com/mackdelany/processingpipeline/blob/master/processing/data_parameters.py) file to see how processing operations are mapped to features.
 
 Take the raw data shown below as an example. Using our `data_parameters.py` file, we can encode what processes to execute on which features, and in what order. This includes multiple mechanisms for dealing with null values, renaming features, scaling, standardizing, custom functions, mapping new values and hot encoding.
 

@@ -22,6 +22,7 @@ data_features = {
 """Operations to be executed on null values
 
 Dictionary with {'FeatureName': Operation to be taken}
+
 To drop all rows that have a null value for a feature, enter 'DROP'
 To fill all feature null values with a zero, enter 'ZEROS'
 To fill all feature null values with a custom string, enter that custom string
